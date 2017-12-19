@@ -1,5 +1,7 @@
 var coffeeShop = {
   beans: 40,
+  money: 0,
+  beanscost: 2,
 
   drinkRequirements: {
     latte: 10,
@@ -7,7 +9,19 @@ var coffeeShop = {
     doubleShot: 15,
     frenchPress: 12
   },
+  
+  buySupplies: function(purchBeans) {
+    if(purchBeans > 0) {
+      coffeeShop.money = this.money - (purchBeans * beanscost)
+    }
+  },
 
+  buyDrink: function(drinkType) {
+    if (drinkType == coffeeShop.drinkRequirements.hasOwnProperty(drinkType)) {
+      makeDrink(drinkType) 
+    }
+  },
+  
   makeDrink: function (drinkType) {
     if (coffeeShop.drinkRequirements.hasOwnProperty(drinkType) && (coffeeShop.beans > coffeeShop.drinkRequirements[drinkType])) {
       coffeeShop.beans = this.beans - coffeeShop.drinkRequirements[drinkType];
