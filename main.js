@@ -9,7 +9,15 @@ var coffeeShop = {
   },
 
   makeDrink: function (drinkType) {
-    // TODO: Finish this method
+    if (coffeeShop.drinkRequirements.hasOwnProperty(drinkType)) {
+      if (coffeeShop.beans > coffeeShop.drinkRequirements[drinkType]) {
+        coffeeShop.beans = this.beans - coffeeShop.drinkRequirements[drinkType];
+      } else {
+        alert("Sorry, we're all out of beans!")
+      }
+    } else {
+      alert("Sorry, we don't make " + drinkType)
+    }
   }
 }
 
